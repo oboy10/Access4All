@@ -13,7 +13,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Access4All - Click to open"
+    "default_title": "Access4All"
   },
   "content_scripts": [
     {
