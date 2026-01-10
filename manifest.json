@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "AccessAll",
+  "description": "Make any website accessible for dyslexia and common disabilities.",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
