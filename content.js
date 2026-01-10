@@ -8,10 +8,12 @@ if (!window.access4allInitialized) {
   window.access4allState = {
     dyslexia: false,
     largeText: false,
+    letterSpacing: false,
     contrast: false,
     focus: false,
     night: false,
     highlight: false,
+    highlightButtons: false,
     ruler: false,
     colorBlind: ""
   };
@@ -78,6 +80,16 @@ if (!window.access4allInitialized) {
         p, span, div, a, button, input { font-size: 18px !important; }
       `;
       console.log("[Access4All] Large text ON");
+    }
+
+    // LETTER SPACING
+    if (s.letterSpacing) {
+      css += `
+        html * {
+          letter-spacing: 0.08em !important;
+        }
+      `;
+      console.log("[Access4All] Letter spacing ON");
     }
 
     // HIGH CONTRAST
@@ -149,18 +161,27 @@ if (!window.access4allInitialized) {
           outline-offset: 2px !important;
           box-shadow: 0 0 8px rgba(255, 152, 0, 0.8) !important;
         }
+      `;
+      console.log("[Access4All] Highlight links ON");
+    }
+
+    // HIGHLIGHT BUTTONS
+    if (s.highlightButtons) {
+      css += `
         button { 
           outline: 3px solid #ff9800 !important;
           outline-offset: 2px !important;
           box-shadow: 0 0 8px rgba(255, 152, 0, 0.8) !important;
         }
-        input, textarea, select { 
-          outline: 3px solid #4CAF50 !important;
+        input[type="button"],
+        input[type="submit"],
+        input[type="reset"] {
+          outline: 3px solid #ff9800 !important;
           outline-offset: 2px !important;
-          box-shadow: 0 0 8px rgba(76, 175, 80, 0.8) !important;
+          box-shadow: 0 0 8px rgba(255, 152, 0, 0.8) !important;
         }
       `;
-      console.log("[Access4All] Highlight mode ON");
+      console.log("[Access4All] Highlight buttons ON");
     }
 
     // COLOR BLINDNESS
