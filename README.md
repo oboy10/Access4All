@@ -1,5 +1,3 @@
----
-
 # AccessAll — Universal Website Accessibility Extension
 
 **AccessAll** is a lightweight Chrome extension that instantly adds accessibility tools to **any website**, helping users with dyslexia, visual impairments, focus difficulties, and reading challenges.
