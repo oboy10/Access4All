@@ -1,10 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "AccessAll",
+  "name": "Access4All",
   "description": "Make any website accessible for dyslexia and common disabilities.",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "action": {
-    "default_popup": "popup.html"
-  }
+    "default_popup": "popup.html",
+    "default_title": "Access4All - Click to open"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
 }
