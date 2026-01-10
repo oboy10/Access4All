@@ -44,13 +44,15 @@ function syncState() {
       // Update all checkboxes
       document.querySelectorAll("input[type='checkbox']").forEach((cb) => {
         const action = cb.dataset.action;
-        cb.checked = !!state[action];
-        console.log("[Access4All Popup] Set checkbox", action, "to", cb.checked);
+        if (state[action] !== undefined) {
+          cb.checked = !!state[action];
+          console.log("[Access4All Popup] Set checkbox", action, "to", cb.checked);
+        }
       });
 
       // Update select dropdown
       const select = document.querySelector("select[data-action='colorBlind']");
-      if (select) {
+      if (select && state.colorBlind !== undefined) {
         select.value = state.colorBlind || "";
         console.log("[Access4All Popup] Set color blind to:", state.colorBlind);
       }
@@ -89,6 +91,20 @@ document.addEventListener("DOMContentLoaded", () => {
       sendMsg("tts");
     });
   }
+
+  // Quick access cards listener
+  document.querySelectorAll(".quick-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const feature = card.dataset.feature;
+      console.log("[Access4All Popup] Quick card clicked:", feature);
+      const checkbox = document.querySelector(`input[data-action="${feature}"]`);
+      if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+        card.classList.toggle("active");
+      }
+    });
+  });
 
   // Sync state when popup opens
   syncState();
