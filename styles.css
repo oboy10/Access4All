@@ -5,9 +5,13 @@
   --bg-gradient: linear-gradient(145deg, #f0f2f5 0%, #e2e8f0 100%);
   --text-primary: #1e293b;
   --text-muted: #64748b;
-  --accent: #10b981;
-  --accent-glow: rgba(16, 185, 129, 0.3);
 }
+:root{
+  --accent-blue: #3b82f6;               /* modern blue */
+  --accent-blue-glow: rgba(59,130,246,.28);
+
+  /* Fix: your button::before uses this but it's missing */
+  --hover-blue-sheen: rgba(59,130,246,.22);
 
 * {
   box-sizing: border-box;
