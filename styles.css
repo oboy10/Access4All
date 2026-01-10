@@ -208,3 +208,16 @@ button.primary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+:root{
+  --accent: #3b82f6;
+  --accent-glow: rgba(59,130,246,.28);
+}
+
+button:hover{
+  border-color: rgba(59,130,246,.35) !important;
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.12),
+    0 8px 18px var(--accent-glow) !important;
+}
+
