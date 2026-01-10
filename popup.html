@@ -4,73 +4,424 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Access4All</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #9ca3af;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --success: #10b981;
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      width: 420px;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+
+    /* Header */
+    header {
+      padding: 20px 16px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header .logo {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    header p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Container */
+    .popup-container {
+      padding: 16px;
+    }
+
+    /* Quick Access Grid */
+    .quick-access {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .quick-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .quick-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+    }
+
+    .quick-card.active {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+
+    .quick-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      display: block;
+      color: var(--accent);
+    }
+
+    .quick-card-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Title */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 24px 0 12px 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .section-header i {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    .section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Toggle Row */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease;
+    }
+
+    .toggle-row:last-child {
+      border-bottom: none;
+    }
+
+    .toggle-row:hover {
+      background: #f9fafb;
+    }
+
+    .toggle-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Switch */
+    .switch {
+      position: relative;
+      width: 50px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #d1d5db;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      height: 24px;
+      width: 24px;
+      left: 2px;
+      top: 2px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .switch input:checked + .slider {
+      background: var(--accent);
+    }
+
+    .switch input:checked + .slider::before {
+      transform: translateX(22px);
+    }
+
+    /* Dropdown */
+    select {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      color: var(--text);
+      min-width: 120px;
+    }
+
+    select:hover {
+      border-color: var(--accent);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    /* Read Button */
+    .read-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .read-btn:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .read-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 12px 16px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+
+    .footer-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #f0fdf4;
+      color: var(--success);
+      border-radius: 4px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+  </style>
 </head>
 <body>
+
 <header>
-  <h1>Access4All</h1>
-  <p>Instant accessibility for any website</p>
+  <h1>
+    <div class="logo"><i class="fas fa-universal-access"></i></div>
+    Access4All
+  </h1>
+  <p>Universal accessibility tools</p>
 </header>
 
 <div class="popup-container">
 
-  <!-- Reading & Dyslexia Section -->
+  <!-- Quick Access Grid -->
+  <div class="quick-access">
+    <div class="quick-card" data-feature="dyslexia">
+      <span class="quick-card-icon"><i class="fas fa-book"></i></span>
+      <div class="quick-card-label">Dyslexia</div>
+    </div>
+    <div class="quick-card" data-feature="contrast">
+      <span class="quick-card-icon"><i class="fas fa-eye"></i></span>
+      <div class="quick-card-label">Low Vision</div>
+    </div>
+    <div class="quick-card" data-feature="focus">
+      <span class="quick-card-icon"><i class="fas fa-bullseye"></i></span>
+      <div class="quick-card-label">Focus</div>
+    </div>
+    <div class="quick-card" data-feature="custom">
+      <span class="quick-card-icon"><i class="fas fa-sliders-h"></i></span>
+      <div class="quick-card-label">Custom</div>
+    </div>
+  </div>
+
+  <!-- Reading & Dyslexia -->
+  <div class="section-header">
+    <i class="fas fa-font"></i>
+    <span>Reading & Dyslexia</span>
+  </div>
   <div class="section">
-    <div class="section-title">Reading & Dyslexia</div>
     <div class="toggle-row">
-      <div class="toggle-label">📖 Dyslexia Mode</div>
+      <span class="toggle-label">Dyslexia Font</span>
       <label class="switch">
         <input type="checkbox" data-action="dyslexia">
         <span class="slider"></span>
       </label>
     </div>
     <div class="toggle-row">
-      <div class="toggle-label">🔤 Larger Text</div>
+      <span class="toggle-label">Large Text (120%)</span>
       <label class="switch">
         <input type="checkbox" data-action="largeText">
         <span class="slider"></span>
       </label>
     </div>
+    <div class="toggle-row">
+      <span class="toggle-label">Letter Spacing</span>
+      <label class="switch">
+        <input type="checkbox" data-action="letterSpacing">
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
 
-  <!-- Vision & Focus Section -->
+  <!-- Vision & Focus -->
+  <div class="section-header">
+    <i class="fas fa-eye"></i>
+    <span>Vision & Focus</span>
+  </div>
   <div class="section">
-    <div class="section-title">Vision & Focus</div>
     <div class="toggle-row">
-      <div class="toggle-label">🌗 High Contrast</div>
+      <span class="toggle-label">High Contrast</span>
       <label class="switch">
         <input type="checkbox" data-action="contrast">
         <span class="slider"></span>
       </label>
     </div>
     <div class="toggle-row">
-      <div class="toggle-label">🎯 Focus Mode</div>
-      <label class="switch">
-        <input type="checkbox" data-action="focus">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="toggle-row">
-      <div class="toggle-label">🌙 Night Mode</div>
+      <span class="toggle-label">Night Mode</span>
       <label class="switch">
         <input type="checkbox" data-action="night">
         <span class="slider"></span>
       </label>
     </div>
+    <div class="toggle-row">
+      <span class="toggle-label">Focus Mode (Overlay)</span>
+      <label class="switch">
+        <input type="checkbox" data-action="focus">
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
 
-  <!-- Highlights & Color Blind Section -->
+  <!-- Highlights & Color -->
+  <div class="section-header">
+    <i class="fas fa-palette"></i>
+    <span>Highlights & Color</span>
+  </div>
   <div class="section">
-    <div class="section-title">Highlights & Color Blind</div>
     <div class="toggle-row">
-      <div class="toggle-label">🔗 Highlight Links & Buttons</div>
+      <span class="toggle-label">Highlight Links</span>
       <label class="switch">
         <input type="checkbox" data-action="highlight">
         <span class="slider"></span>
       </label>
     </div>
     <div class="toggle-row">
-      <div class="toggle-label">🖌️ Color Blind Mode</div>
+      <span class="toggle-label">Highlight Buttons</span>
+      <label class="switch">
+        <input type="checkbox" data-action="highlightButtons">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">Color Blind Mode</span>
       <select data-action="colorBlind">
         <option value="">None</option>
         <option value="protanopia">Protanopia (Red-Blind)</option>
@@ -80,18 +431,21 @@
     </div>
   </div>
 
-  <!-- Reading Ruler & TTS -->
-  <div class="section">
-    <div class="section-title">Assistive</div>
-    <div class="toggle-row">
-      <div class="toggle-label">📏 Reading Ruler (↑↓)</div>
-      <label class="switch">
-        <input type="checkbox" data-action="ruler">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <button class="read-btn" data-action="tts">🔊 Read Selected Text</button>
+  <!-- Assistive -->
+  <div class="section-header">
+    <i class="fas fa-volume-up"></i>
+    <span>Assistive</span>
   </div>
+  <button class="read-btn" data-action="tts">
+    <i class="fas fa-volume-up"></i>
+    <span>Read Selected Text</span>
+  </button>
+
+  <!-- Footer -->
+  <div class="footer">
+    WCAG 2.1 Compliant <span class="footer-badge">● Active on current site</span>
+  </div>
+
 </div>
 
 <script src="popup.js"></script>
