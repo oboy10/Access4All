@@ -19,6 +19,7 @@ body {
   height: 520px;
   background: var(--bg-gradient);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-primary);
   /* FIXED: Removed overflow: hidden */
 }
