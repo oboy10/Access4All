@@ -43,12 +43,12 @@ header h1 {
 header p {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 /* Container */
 .popup-container {
-  padding: 12px;
+  padding: 15px;
 }
 
 /* Sections */
@@ -58,16 +58,16 @@ header p {
   padding: 14px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.5em;
   color: var(--muted);
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 /* Toggle Rows */
