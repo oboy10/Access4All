@@ -1,8 +1,3 @@
-Below is a **clean, judge-ready README** you can copy directly into a `README.md` file.
-It explains **what the extension does**, **why it matters**, and **exactly how to run it on any computer** (Chrome Extensions setup included).
-
-This is written at the level hackathon judges expect.
-
 ---
 
 # AccessAll — Universal Website Accessibility Extension
