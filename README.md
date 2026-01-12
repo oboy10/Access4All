@@ -123,18 +123,6 @@ No page reloads required.
 
 ---
 
-## 🧪 Example Demo Flow (For Judges)
-
-1. Open a news website
-2. Toggle **Dyslexia Mode**
-3. Toggle **High Contrast**
-4. Enable **Focus Mode**
-5. Select a paragraph
-6. Click **Read Selected Text**
-7. Show that it works instantly across different sites
-
----
-
 ## 🛠️ Known Limitations
 
 * Some extremely locked-down sites may partially override styles
