@@ -1,16 +1,16 @@
-# AccessAll — Universal Website Accessibility Extension
+# Access4All — Universal Website Accessibility Extension
 
-**AccessAll** is a lightweight Chrome extension that instantly adds accessibility tools to **any website**, helping users with dyslexia, visual impairments, focus difficulties, and reading challenges.
+**Access4All** is a lightweight Chrome extension that instantly adds accessibility tools to **any website**, helping users with dyslexia, visual impairments, focus difficulties, and reading challenges.
 
 No accounts. No payments. No setup per site.
 It works everywhere.
 
 ---
 
-## 🌍 Why AccessAll?
+## 🌍 Why Access4All?
 
 Many websites are not designed with accessibility in mind.
-AccessAll empowers users by letting them **adapt the web to their needs**, instead of relying on every site to do the right thing.
+Access4All empowers users by letting them **adapt the web to their needs**, instead of relying on every site to do the right thing.
 
 ### Who it helps
 
@@ -73,14 +73,14 @@ AccessAll empowers users by letting them **adapt the web to their needs**, inste
 
 ---
 
-## 🚀 How to Run AccessAll on Your Computer (Chrome)
+## 🚀 How to Run Access4All on Your Computer (Chrome)
 
 ### 1️⃣ Download the Project and unzip it
 
 Make sure you have these files in **one folder**:
 
 ```
-accessall/
+Access4All/
 ├── manifest.json
 ├── popup.html
 ├── popup.js
@@ -106,7 +106,7 @@ accessall/
 ### 4️⃣ Load the Extension
 
 * Click **“Load unpacked”**
-* Select the `accessall` folder
+* Select the `Access4All` folder
 
 ✅ The extension is now installed.
 
@@ -115,7 +115,7 @@ accessall/
 ### 5️⃣ Use the Extension
 
 1. Visit **any website**
-2. Click the **AccessAll icon** in the Chrome toolbar
+2. Click the **Access4All icon** in the Chrome toolbar
 3. Toggle accessibility features instantly
 4. Select text → click **Read Selected Text** to hear it aloud
 
