@@ -75,7 +75,7 @@ AccessAll empowers users by letting them **adapt the web to their needs**, inste
 
 ## 🚀 How to Run AccessAll on Your Computer (Chrome)
 
-### 1️⃣ Download the Project
+### 1️⃣ Download the Project and unzip it
 
 Make sure you have these files in **one folder**:
 
